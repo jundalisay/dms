@@ -5,14 +5,14 @@ default: &default
 
 development:
   <<: *default
-  database: siten_development
+  database: dms_development
 
 test:
   <<: *default
-  database: siten_test
+  database: dms_test
 
 production:
   <<: *default
-  database: siten_production
-  username: siten
-  password: <%= ENV['SITEN_DATABASE_PASSWORD'] %>
+  database: dms_production
+  username: dms
+  password: <%= ENV['DMS_DATABASE_PASSWORD'] %>

@@ -13,6 +13,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :gender, default: "female"
       t.string :rel_status
 
+      t.string :filepicker_url
+
       t.string :user_street_address
       t.string :user_district
       t.string :user_city

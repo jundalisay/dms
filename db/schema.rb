@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20161008083713) do
     t.date     "birthday"
     t.string   "gender",                 default: "female"
     t.string   "rel_status"
+    t.string   "filepicker_url"
     t.string   "user_street_address"
     t.string   "user_district"
     t.string   "user_city"

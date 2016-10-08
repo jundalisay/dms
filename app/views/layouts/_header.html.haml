@@ -6,15 +6,13 @@
     %ul.nav.navbar-nav.pull-right
       %li.nav-item.active
         %a.nav-link{:href => root_path}
-          SORA
+          DMS
       %li.nav-item
-        %a.nav-link{:href => educations_path} Education
+        %a.nav-link{:href => educations_path} Acaryas
       %li.nav-item
-        %a.nav-link{:href => employments_path} Employment
+        %a.nav-link{:href => employments_path} Margiis
       %li.nav-item
-        %a.nav-link{"data-toggle" => "collapse", :href => "#myAlert"} Updates
-      %li.nav-item
-        %a.nav-link{"data-target" => "#aboutModal", "data-toggle" => "modal", :href => ""} About
+        %a.nav-link{"data-toggle" => "collapse", :href => "#myAlert"} Updates        
 
       - if current_user.present?
         %li.nav-item
@@ -23,7 +21,11 @@
           = link_to t("layout.logout"), destroy_user_session_path, method: :delete, class: "dropdown-item"
       - else
         %li.nav-item
-          = link_to t("login"), new_user_session_path, class: "btn btn-primary"
+          / %a.nav-link{"data-target" => "#loginModal", "data-toggle" => "modal", :href => ""} Login or Signup
+          = link_to t("login.Login"), new_user_session_path, class: "btn btn-primary"
+        %li.nav-item
+          / %a.nav-link{"data-target" => "#loginModal", "data-toggle" => "modal", :href => ""} Login or Signup
+          = link_to t("login.Sign up"), new_user_registration_path, class: "btn btn-primary"
 
       / %li.nav-item
       /   .input-group
@@ -47,7 +49,7 @@
         /   %input.form-control{:placeholder => "Search", :type => "text"}/
         /   %button.btn.btn-secondary-outline{:type => "submit"} Search
 
-#aboutModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+#loginModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
   .modal-dialog{:role => "document"}
     .modal-content
       .modal-header

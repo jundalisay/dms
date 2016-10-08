@@ -1,12 +1,11 @@
 #main.container-fluid
   .col-md-9.col-lg-10.main
-    / toggle sidebar button
     %p.hidden-md-up
       %button.btn.btn-primary-outline.btn-sm{"data-toggle" => "offcanvas", :type => "button"}
         %i.fa.fa-chevron-left
         Menu
     %h3.display-4.hidden-xs-down
-      Siten CV Management System
+    / DMS 2016
     / %p.lead (Find your CV, find your own style)
     #myAlert.alert.alert-warning.fade.collapse{:role => "alert"}
       %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
@@ -17,30 +16,23 @@
       .col-md-4.col-sm-6
         .card.card-inverse.card-success
           .card-block.bg-success
-            .rotate
-              %i.fa.fa-user.fa-5x
-            %h6.text-uppercase Users
+            %h6.text-uppercase Registrations
             %h1.display-1.count #{@users.count}
       .col-md-4.col-sm-6
         .card.card-inverse.card-danger
-          .card-block.bg-danger
-            .rotate
-              %i.fa.fa-list.fa-4x
-            %h6.text-uppercase Employers
+          .card-block.bg-warning
+            %h6.text-uppercase Acaryas
             %h1.display-1.count
               - if @employers.present?
                 #{@employers.count}
       .col-md-4.col-sm-6
         .card.card-inverse.card-info
-          .card-block.bg-info
-            .rotate
-              %i.fa.fa-twitter.fa-5x
-            %h6.text-uppercase Profiles
-            %h1.display-1.count
-              - if @profiles.present?
-                #{@profiles.count}
+          .card-block.bg-danger
+            %h6.text-uppercase Days Left Before Event
+            #countdown
     %hr
-
+    = link_to image_tag("https://scontent-hkg3-1.xx.fbcdn.net/t31.0-8/14409546_1594683674160295_1172503087269735871_o.jpg", class: "img-fluid center-block img-rounded")
+    
 
     - if current_user.present?
       .col-xs-12
@@ -79,3 +71,33 @@
           }
       });
   });
+
+
+  var target_date = new Date("Nov 18, 2016").getTime();
+
+  var days, hours, minutes, seconds;
+
+  //get tag element
+  var countdown = document.getElementById("countdown");
+
+  // update the tag with id "countdown" every 1 second
+  setInterval(function () {
+      
+      //find the amount of "seconds" between now and target
+      var current_date = new Date().getTime();
+      var seconds_left = (target_date - current_date) / 1000;
+
+      // do some time calculations    
+      days = parseInt( seconds_left / 86400 );
+      seconds_left = seconds_left % 86400;
+      
+      hours = parseInt( seconds_left / 3600 );
+      seconds_left = seconds_left % 3600;
+      
+      minutes = parseInt( seconds_left / 60 );
+      seconds = parseInt( seconds_left % 60 );
+      
+      // format countdown string + set tag value
+      countdown.innerHTML = days + " <span class\=\"calendar\">days<\/span><br> " + hours + " <span class\=\"calendar\">hours<\/span><br> " + minutes + " <span class\=\"calendar\">minutes<\/span><br> " + seconds + " <span class\=\"calendar\">seconds<\/span>";
+          
+  }, 1000);

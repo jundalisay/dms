@@ -18,7 +18,9 @@ gem 'bootstrap', '~> 4.0.0.alpha4'
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
-gem 'wicked_pdf'
+
+# File Gems
+gem 'filepicker-rails'
 
 # Authentication, Form Gems
 gem 'simple_form'
@@ -28,7 +30,6 @@ gem 'mail'
 # gem 'redis', '~> 3.0' # Use Redis adapter to run Action Cable in production
 # gem 'capistrano-rails', group: :development
 
-gem 'devise'
 
 group :development, :test do
   gem 'byebug', platform: :mri
