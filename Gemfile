@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease
 # Style Template Gems
 gem 'sass-rails', '~> 5.0'
 gem 'haml-rails'
+gem "slim-rails"
 gem 'bootstrap', '~> 4.0.0.alpha4'
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
