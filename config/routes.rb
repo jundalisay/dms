@@ -2,11 +2,11 @@ Rails.application.routes.draw do
 
   resources :educations
   resources :employments
-  get 'users/index'
+  # get 'users/index'
 
-  get 'users/show'
+  # get 'users/show'
 
-  root 'welcome#index'
+  root 'users#index'
   
   devise_for :users, controllers: { registrations: "registrations", sessions: "sessions"}
   resources :users 
