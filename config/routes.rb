@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
-  
-  devise_for :users
+
+  resources :educations
+  resources :employments
+  get 'users/index'
+
+  get 'users/show'
+
   root 'welcome#index'
   
+  devise_for :users, controllers: { registrations: "registrations", sessions: "sessions"}
+  resources :users 
+
 end
