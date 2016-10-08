@@ -25,10 +25,27 @@
         %li.nav-item
           = link_to t("login"), new_user_session_path, class: "btn btn-primary"
 
-      %li.nav-item
-        %form.form-inline.navbar-form.pull-right
-          %input.form-control{:placeholder => "Search", :type => "text"}/
-          %button.btn.btn-secondary-outline{:type => "submit"} Search
+      / %li.nav-item
+      /   .input-group
+      /     = text_field_tag :query, params[:query], placeholder: "Search for...", class: "form-control"
+      /     %span.input-group-btn
+      /       %button.btn.btn-default{:type => "button"} Go!
+
+      %form.form-inline.pull-xs-right
+        .input-group
+          = text_field_tag :query, params[:query], placeholder: "Search for...", class: "form-control"
+          %span.input-group-btn
+            %button.btn.btn-default{:type => "button"} Go!
+
+      
+        / %input.form-control{:placeholder => "Search", :type => "text"}/
+        / %button.btn{:type => "submit"} Search
+
+
+
+        / %form.form-inline.navbar-form.pull-right
+        /   %input.form-control{:placeholder => "Search", :type => "text"}/
+        /   %button.btn.btn-secondary-outline{:type => "submit"} Search
 
 #aboutModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
   .modal-dialog{:role => "document"}

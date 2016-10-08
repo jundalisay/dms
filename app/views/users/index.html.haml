@@ -5,15 +5,14 @@
       %button.btn.btn-primary-outline.btn-sm{"data-toggle" => "offcanvas", :type => "button"}
         %i.fa.fa-chevron-left
         Menu
-    %h1.display-1.hidden-xs-down
-      CV Templates 
-    %p.lead (Find your CV, find your own style)
+    %h3.display-4.hidden-xs-down
+      Siten CV Management System
+    / %p.lead (Find your CV, find your own style)
     #myAlert.alert.alert-warning.fade.collapse{:role => "alert"}
       %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
         %span{"aria-hidden" => "true"} ×
         %span.sr-only Close
-      %strong Holy guacamole!
-      It's free.. this is an example theme.
+      %strong Still many features to implement!
     .row
       .col-md-4.col-sm-6
         .card.card-inverse.card-success
@@ -21,128 +20,47 @@
             .rotate
               %i.fa.fa-user.fa-5x
             %h6.text-uppercase Users
-            %h1.display-1.count 10000
+            %h1.display-1.count #{@users.count}
       .col-md-4.col-sm-6
         .card.card-inverse.card-danger
           .card-block.bg-danger
             .rotate
               %i.fa.fa-list.fa-4x
-            %h6.text-uppercase CV templates 
-            %h1.display-1.count 15698
+            %h6.text-uppercase Employers
+            %h1.display-1.count
+              - if @employers.present?
+                #{@employers.count}
       .col-md-4.col-sm-6
         .card.card-inverse.card-info
           .card-block.bg-info
             .rotate
               %i.fa.fa-twitter.fa-5x
-            %h6.text-uppercase Jobs 
-            %h1.display-1.count 68989
-      
-    / /row
-    %hr/
-    .row.placeholders
-      .col-xs-6.col-sm-3.placeholder.text-center
-        %img.center-block.img-responsive.img-circle{:alt => "Generic placeholder thumbnail", :src => "//placehold.it/200/dddddd/fff?text=1"}/
-        %h4 Responsive
-        %span.text-muted Device agnostic
-      .col-xs-6.col-sm-3.placeholder.text-center
-        %img.center-block.img-responsive.img-circle{:alt => "Generic placeholder thumbnail", :src => "//placehold.it/200/e4e4e4/fff?text=2"}/
-        %h4 Frontend
-        %span.text-muted UI / UX oriented
-      .col-xs-6.col-sm-3.placeholder.text-center
-        %img.center-block.img-responsive.img-circle{:alt => "Generic placeholder thumbnail", :src => "//placehold.it/200/d6d6d6/fff?text=3"}/
-        %h4 HTML5
-        %span.text-muted Standards-based
-      .col-xs-6.col-sm-3.placeholder.text-center
-        %img.center-block.img-responsive.img-circle{:alt => "Generic placeholder thumbnail", :src => "//placehold.it/200/e0e0e0/fff?text=4"}/
-        %h4 Framework
-        %span.text-muted CSS and JavaScript
-    %a#features
-    %hr/
-    %p.lead
-      Are you ready for Bootstap 4? It's the 4th generation of this popular responsive framework. Bootstrap 4 will include some interesting new features such as 5 grid sizes (now including xl), cards, `em` sizing, CSS normalization (reboot) and larger font
-      sizes.
-    %hr/
+            %h6.text-uppercase Profiles
+            %h1.display-1.count
+              - if @profiles.present?
+                #{@profiles.count}
+    %hr
+
 
     - if current_user.present?
-      .row
-        .col-lg-3.col-md-4
-          .card
-            %img.card-img-top.img-responsive{:alt => "Card image cap", :src => "//placehold.it/740x180/bbb/fff?text=..."}/
-            .card-block
-              %h4.card-title Card title
-              %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
-              %a.btn.btn-primary{:href => "#"} Button
-          .card.card-inverse{:style => "background-color: #333; border-color: #333;"}
-            .card-block
-              %h3.card-title Dark background
-              %p.card-text With supporting text below as a natural lead-in to additional content.
-              %a.btn.btn-secondary-outline{:href => "#"} Outline
-        .col-lg-9.col-md-8
-          .table-responsive
-            %table.table.table-striped
-              %thead.thead-inverse
+      .col-xs-12
+        .table-responsive
+          %table.table.table-striped
+            %thead.thead-inverse
+              %tr
+                %th #
+                %th User
+                %th Email
+                %th Last Employer
+                %th Last Education
+            %tbody
+              - @users.each do |user|
                 %tr
-                  %th #
-                  %th Label
-                  %th Header
-                  %th Column
-                  %th Data
-              %tbody
-                %tr
-                  %td 1,001
-                  %td responsive
-                  %td bootstrap
-                  %td cards
-                  %td grid
-                %tr
-                  %td 1,002
-                  %td rwd
-                  %td web designers
-                  %td theme
-                  %td responsive
-                %tr
-                  %td 1,003
-                  %td free
-                  %td open-source
-                  %td download
-                  %td template
-                %tr
-                  %td 1,003
-                  %td frontend
-                  %td developer
-                  %td coding
-                  %td card panel
-                %tr
-                  %td 1,004
-                  %td migration
-                  %td bootstrap 4
-                  %td mobile-first
-                  %td design
-                %tr
-                  %td 1,005
-                  %td navbar
-                  %td sticky
-                  %td jumbtron
-                  %td header
-                %tr
-                  %td 1,006
-                  %td collapse
-                  %td affix
-                  %td submenu
-                  %td footer
-                %tr
-                  %td 1,007
-                  %td layout
-                  %td examples
-                  %td themes
-                  %td grid
-                %tr
-                  %td 1,008
-                  %td migration
-                  %td bootstrap 4
-                  %td flexbox
-                  %td design
-      / /row
+                  %td=user.id
+                  %td=user.username
+                  %td= link_to user.email, user_path(user)
+                  %td=user.id
+                  %td=user.id
       %a#more
       %hr/
     - else

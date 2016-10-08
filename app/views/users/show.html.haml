@@ -1,2 +1,63 @@
-%h1 Users#show
-%p Find me in app/views/users/show.html.haml
+.container
+  = link_to t('groups.print_cv'), root_path, class: "btn btn-success", :onclick => 'alert("Sorry, this feature is not yet available!")'
+
+  .col-xs-12
+    .card.card-default.card-block
+      %ul#tabsJustified.nav.nav-tabs.nav-justified
+        %li.nav-item
+          %a.nav-link.active{"data-target" => "#tab1", "data-toggle" => "tab", :href => ""} Profile
+        %li.nav-item
+          %a.nav-link{"data-target" => "#tab2", "data-toggle" => "tab", :href => ""} More
+
+      %br
+      #tabsJustifiedContent.tab-content
+        #tab1.tab-pane.fade.active.in
+          .row
+            .col-sm-7
+              %h4 #{@user.email}
+              %p #{@user.username}
+            .col-sm-5
+              %img.pull-right.img-responsive.img-rounded{:src => "//placehold.it/170"}/
+          %hr/
+          = link_to t('helpers.edit'), user_path(@user), class: "btn btn-primary"
+          .spacer5
+        #tab2.tab-pane.fade
+          #accordion{"aria-multiselectable" => "true", :role => "tablist"}
+          .card
+            #headingOne.card-header{:role => "tab"}
+              %a{"aria-controls" => "collapseOne", "aria-expanded" => "true", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseOne"}
+                Collapsible Group Item #1
+            #collapseOne.card-block.collapse.in{"aria-labelledby" => "headingOne", :role => "tabpanel"}
+              %p
+                This is a Bootstrap 4 accordion that uses the
+                %code .card
+                classes instead of
+                = succeed "." do
+                  %code .panel
+            #headingTwo.card-header{:role => "tab"}
+              %a.collapsed{"aria-controls" => "collapseTwo", "aria-expanded" => "false", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseTwo"}
+                Collapsible Group Item #2
+            #collapseTwo.card-block.collapse{"aria-labelledby" => "headingTwo", :role => "tabpanel"}
+              %p Just like it's predecesor, Bootstrap 4 is mobile-first so that you start by designing for smaller devices such as smartphones and tablets, then proceed to laptop and desktop layouts.
+            #headingThree.card-header{:role => "tab"}
+              %a.collapsed{"aria-controls" => "collapseThree", "aria-expanded" => "false", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseThree"}
+                Collapsible Group Item #3
+            #collapseThree.card-block.collapse{"aria-labelledby" => "headingThree", :role => "tabpanel"}
+              %p Bootstrap employs a handful of important global styles and settings that you’ll need to be aware of when using it, all of which are almost exclusively geared towards the normalization of cross browser styles.
+
+%footer.container-fluid
+  %p.text-right.small ©2016 Siten
+/ Modal
+#myModal.modal.fade{:role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+          %span.sr-only Close
+        %h4#myModalLabel.modal-title Large Modal
+      .modal-body
+        This is a dashboard layout for Bootstrap 4. This is an example of the Modal component which you can use to show content. Any content can be placed inside the modal and it can use the Bootstrap grid classes.
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+        %button.btn.btn-primary-outline{"data-dismiss" => "modal", :type => "button"} OK
