@@ -20,6 +20,12 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :user_country
       t.string :user_region, default: "Vietnam"
 
+      t.string :hobbies
+      t.string :weaknesses
+      t.string :strengths
+
+      t.boolean :verified
+
       t.string :national_id
       t.string :drivers_license
       t.string :social_security

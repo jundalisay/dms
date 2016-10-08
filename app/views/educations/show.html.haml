@@ -1,6 +1,16 @@
-%p#notice= notice
+.container 
 
+  %p#notice= notice
 
-= link_to 'Edit', edit_education_path(@education)
-\|
-= link_to 'Back', educations_path
+  %b School Name: 
+  #{@education.school_name}
+  %br 
+  %b Address:
+  = @education.address
+  %br
+  %b Course Name: 
+  = @education.course_name
+
+  = link_to 'Edit', edit_education_path(@education)
+  \|
+  = link_to 'Back', educations_path

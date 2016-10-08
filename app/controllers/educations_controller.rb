@@ -1,6 +1,6 @@
 class EducationsController < ApplicationController
   before_action :set_education, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, only: [:index, :show, :new, :edit, :update, :destroy]
   # GET /educations
   # GET /educations.json
   def index
@@ -69,6 +69,7 @@ class EducationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def education_params
-      params.fetch(:education, {})
+      params.require(:education).permit(:school_name, :address, :course_name, :from_date, :to_date, :school_logo)
     end
+    
 end

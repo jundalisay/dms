@@ -16,13 +16,25 @@ ActiveRecord::Schema.define(version: 20161008083713) do
   enable_extension "plpgsql"
 
   create_table "educations", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "school_name"
+    t.string   "address"
+    t.string   "course_name"
+    t.date     "from_date"
+    t.date     "to_date"
+    t.string   "school_logo"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "employments", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "employer_name"
+    t.string   "address"
+    t.string   "position"
+    t.date     "from_date"
+    t.date     "to_date"
+    t.string   "company_logo"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,6 +53,10 @@ ActiveRecord::Schema.define(version: 20161008083713) do
     t.string   "user_province"
     t.string   "user_country"
     t.string   "user_region",            default: "Vietnam"
+    t.string   "hobbies"
+    t.string   "weaknesses"
+    t.string   "strengths"
+    t.boolean  "verified"
     t.string   "national_id"
     t.string   "drivers_license"
     t.string   "social_security"
